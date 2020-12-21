@@ -3,7 +3,7 @@ module.exports = {
         provider: "google-cloud-storage",
         providerOptions: {
             bucketName: "igem-strapi",
-            publicFiles: false,
+            publicFiles: true,
             uniform: false,
             basePath: "",
         },
