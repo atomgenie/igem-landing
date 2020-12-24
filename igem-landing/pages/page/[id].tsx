@@ -43,13 +43,7 @@ export const getStaticProps: GetStaticProps<props> = async ctx => {
 export const getStaticPaths: GetStaticPaths = async () => {
     return {
         fallback: true,
-        paths: [
-            {
-                params: {
-                    id: "5fe3260a47d51f11b7f55da7",
-                },
-            },
-        ],
+        paths: [],
     }
 }
 
