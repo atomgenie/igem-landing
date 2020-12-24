@@ -8,6 +8,7 @@ import { Navigation } from "@components/navigation"
 import { NavigationAPI } from "@igem-types/navigation"
 import { useNavigation } from "@helpers/navigation"
 import { useRouter } from "next/router"
+import Link from "next/link"
 
 interface props {
     home: HomeAPI
@@ -22,24 +23,33 @@ const Home: React.FC<props> = ({ home, navigation }) => {
             <Navigation navigation={navigation} />
             <div className="container mx-auto px-4">
                 <div className="flex flex-col">
-                    <div className="flex flex-col gap-4 mt-4">
+                    <div className="flex flex-wrap gap-4 mt-4">
                         {home.pages.map(page => (
-                            <div
-                                key={page.id}
-                                style={{
-                                    backgroundImage: `url(${getImage(page.picture.url)})`,
-                                }}
-                                className="bg-center bg-cover"
-                            >
+                            <Link key={page.id} href={`/page/${page.id}`}>
                                 <div
-                                    className="text-white h-56 flex items-center justify-center text-center font-bold p-4"
-                                    style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
+                                    style={{
+                                        backgroundImage: `url(${getImage(
+                                            page.picture.url,
+                                        )})`,
+                                        minWidth: 400,
+                                    }}
+                                    className="bg-center bg-cover flex-grow rounded-lg overflow-hidden cursor-pointer"
                                 >
-                                    <div className="py-1 border-2 border-white px-4">
-                                        {locale === "fr" ? page.title_fr : page.title_en}
+                                    <div
+                                        className="text-white h-56 flex items-end justify-start text-center font-bold p-4"
+                                        style={{
+                                            background:
+                                                "linear-gradient(to top, rgba(0,0,0,0.5), transparent)",
+                                        }}
+                                    >
+                                        <div className="">
+                                            {locale === "fr"
+                                                ? page.title_fr
+                                                : page.title_en}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
