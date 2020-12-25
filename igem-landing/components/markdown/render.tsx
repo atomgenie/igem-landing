@@ -36,7 +36,7 @@ export const renderers = {
         return (
             <li className="flex items-start">
                 {props.ordered ? (
-                    <div className="mr-4">{props.index + 1}.</div>
+                    <div className="mr-2 w-6 flex-shrink-0">{props.index + 1}.</div>
                 ) : (
                     <div className="bg-black h-1 mt-2 w-1 rounded-full mr-4 flex-shrink-0"></div>
                 )}

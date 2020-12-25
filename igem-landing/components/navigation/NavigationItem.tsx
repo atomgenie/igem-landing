@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import { NavigationAPI } from "@igem-types/navigation"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { FiChevronDown } from "react-icons/fi"
 
 interface props {
     item: NavigationAPI["navigations"][number]
@@ -45,8 +46,12 @@ export const NavigationItem: React.FC<props> = ({ item }) => {
 
     return (
         <div className="relative">
-            <div onClick={() => setOpen(!open)} className="cursor-pointer">
-                {locale === "fr" ? item.title_fr : item.title_en}
+            <div
+                onClick={() => setOpen(!open)}
+                className="cursor-pointer flex items-center"
+            >
+                <div>{locale === "fr" ? item.title_fr : item.title_en}</div>
+                <FiChevronDown className="ml-1" />
             </div>
             <div
                 className={`${

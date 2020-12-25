@@ -36,7 +36,7 @@ export const Navigation: React.FC<props> = ({ navigation }) => {
                             <img
                                 src="/images/Logo.png"
                                 alt="iGEM IONIS Paris"
-                                className="max-h-14 mt-4"
+                                className="max-h-14 mt-4 object-contain"
                             />
                         </div>
                         <div className="text-center text-gray-600 mt-2">
@@ -63,9 +63,16 @@ export const Navigation: React.FC<props> = ({ navigation }) => {
             </div>
             {menuOpen && (
                 <div className="fixed flex items-stretch md:hidden h-full w-full z-40 top-0 left-0">
-                    <div className="max-h-full overflow-y-auto w-3/4 bg-white h-full py-6 px-4 flex flex-col gap-2 font-bold text-gray-600">
+                    <div className="max-h-full overflow-y-auto w-3/4 bg-white h-full py-6 px-4 flex flex-col gap-1 font-bold text-gray-600">
                         <Link href="/">
-                            <a>{locale === "fr" ? "Accueil" : "Home"}</a>
+                            <a>
+                                <img
+                                    src="/images/Logo.png"
+                                    alt="iGEM IONIS Paris"
+                                    className="max-h-10 object-contain self-start mb-4"
+                                />
+                                <div>{locale === "fr" ? "Accueil" : "Home"}</div>
+                            </a>
                         </Link>
                         {navigation.navigations.map(nav => (
                             <React.Fragment key={nav.id}>
@@ -79,20 +86,21 @@ export const Navigation: React.FC<props> = ({ navigation }) => {
                                     </Link>
                                 ) : (
                                     <>
-                                        <div>
+                                        <div className="mb-2">
                                             {locale === "fr"
                                                 ? nav.title_fr
                                                 : nav.title_en}
                                         </div>
                                         {nav.pages.map(page => (
                                             <Link key={page.id} href={`/page/${page.id}`}>
-                                                <div className="mx-3 text-sm cursor-pointer">
+                                                <div className="mx-1 text-sm cursor-pointer">
                                                     {locale === "fr"
                                                         ? page.title_fr
                                                         : page.title_en}
                                                 </div>
                                             </Link>
                                         ))}
+                                        <div className="mb-2"></div>
                                     </>
                                 )}
                             </React.Fragment>

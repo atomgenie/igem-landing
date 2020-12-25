@@ -11,6 +11,7 @@ import { HomeAPI } from "@igem-types/home"
 import { renderers } from "@components/markdown/render"
 import { getImage } from "@helpers/image"
 import { FiLoader } from "react-icons/fi"
+import { Footer } from "@components/footer"
 
 interface props {
     navigation: NavigationAPI
@@ -40,19 +41,22 @@ const Page: React.FC<props> = ({ navigation, page }) => {
                         {locale === "fr" ? page.title_fr : page.title_en}
                     </h1>
                 </div>
-                <img
-                    className="w-full rounded-lg mt-4 object-cover"
-                    src={getImage(page.picture, "large")}
-                    style={{
-                        maxHeight: "50vh",
-                    }}
-                />
-                <div className="mt-8">
+                {page.show_picture_on_page && (
+                    <img
+                        className="w-full rounded-lg mt-4 object-cover"
+                        src={getImage(page.picture, "large")}
+                        style={{
+                            maxHeight: "50vh",
+                        }}
+                    />
+                )}
+                <div className="my-8">
                     <Markdown allowDangerousHtml renderers={renderers}>
                         {locale === "fr" ? page.text_fr : page.text_en}
                     </Markdown>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

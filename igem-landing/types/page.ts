@@ -13,4 +13,5 @@ export interface PageAPI {
     picture: ImageAPI
     id: string
     author: string
+    show_picture_on_page: boolean
 }
