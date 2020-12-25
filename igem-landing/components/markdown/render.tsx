@@ -4,23 +4,11 @@ export const renderers = {
     heading: props => {
         switch (props.level) {
             case 1:
-                return (
-                    <h1 className="text-3xl font-bold text-red-700 mt-4">
-                        {props.children}
-                    </h1>
-                )
+                return <h1 className="text-3xl font-bold mt-4">{props.children}</h1>
             case 2:
-                return (
-                    <h2 className="text-2xl font-bold text-red-800 mt-2">
-                        {props.children}
-                    </h2>
-                )
+                return <h2 className="text-2xl font-bold mt-2">{props.children}</h2>
             case 3:
-                return (
-                    <h3 className="text-xl font-bold text-red-900 mt-1">
-                        {props.children}
-                    </h3>
-                )
+                return <h3 className="text-xl font-bold mt-1">{props.children}</h3>
             case 4:
                 return <h4 className="text-lg font-bold">{props.children}</h4>
             case 5:
@@ -48,16 +36,15 @@ export const renderers = {
         return (
             <li className="flex items-start">
                 {props.ordered ? (
-                    <div className="mr-2">{props.index + 1}.</div>
+                    <div className="mr-4">{props.index + 1}.</div>
                 ) : (
-                    <div className="bg-black h-1 mt-2 w-1 rounded-full mr-2 flex-shrink-0"></div>
+                    <div className="bg-black h-1 mt-2 w-1 rounded-full mr-4 flex-shrink-0"></div>
                 )}
                 <div>{props.children}</div>
             </li>
         )
     },
     image: props => {
-        console.log(props)
         return (
             <img
                 src={

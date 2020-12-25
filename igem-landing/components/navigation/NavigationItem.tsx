@@ -38,9 +38,7 @@ export const NavigationItem: React.FC<props> = ({ item }) => {
     if (item.pages.length === 1) {
         return (
             <Link href={`/page/${item.pages[0].id}`}>
-                <div className="cursor-pointer">
-                    {locale === "fr" ? item.title_fr : item.title_en}
-                </div>
+                <a>{locale === "fr" ? item.title_fr : item.title_en}</a>
             </Link>
         )
     }

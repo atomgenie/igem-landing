@@ -47,6 +47,9 @@ export const Navigation: React.FC<props> = ({ navigation }) => {
                     </div>
                 </Link>
                 <div className="hidden md:flex gap-4 py-3 mt-4 text-gray-500 bg-gray-100 rounded px-4">
+                    <Link href="/">
+                        <a>{locale === "fr" ? "Accueil" : "Home"}</a>
+                    </Link>
                     {navigation.navigations.map(item => (
                         <NavigationItem item={item} key={item.id} />
                     ))}
@@ -59,17 +62,20 @@ export const Navigation: React.FC<props> = ({ navigation }) => {
                 {menuOpen ? <FiX /> : <FiMenu />}
             </div>
             {menuOpen && (
-                <div className="fixed flex items-stretch md:hidden h-full w-full z-10 top-0 left-0">
+                <div className="fixed flex items-stretch md:hidden h-full w-full z-40 top-0 left-0">
                     <div className="max-h-full overflow-y-auto w-3/4 bg-white h-full py-6 px-4 flex flex-col gap-2 font-bold text-gray-600">
+                        <Link href="/">
+                            <a>{locale === "fr" ? "Accueil" : "Home"}</a>
+                        </Link>
                         {navigation.navigations.map(nav => (
                             <React.Fragment key={nav.id}>
                                 {nav.pages.length === 1 ? (
                                     <Link href={`/page/${nav.pages[0].id}`}>
-                                        <div className="cursor-pointer">
+                                        <a className="cursor-pointer">
                                             {locale === "fr"
                                                 ? nav.title_fr
                                                 : nav.title_en}
-                                        </div>
+                                        </a>
                                     </Link>
                                 ) : (
                                     <>

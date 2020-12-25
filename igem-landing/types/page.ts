@@ -5,6 +5,8 @@ export interface PageAPI {
     title_fr: string
     text_en: string
     text_fr: string
+    category_en: string
+    category_fr: string
     published_at: string
     createdAt: string
     updatedAt: string

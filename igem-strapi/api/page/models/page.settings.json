@@ -33,6 +33,16 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "category_fr": {
+      "type": "string"
+    },
+    "category_en": {
+      "type": "string"
+    },
+    "public": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
