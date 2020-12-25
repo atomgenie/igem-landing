@@ -12,6 +12,7 @@ import { renderers } from "@components/markdown/render"
 import { getImage } from "@helpers/image"
 import { FiLoader } from "react-icons/fi"
 import { Footer } from "@components/footer"
+import Head from "next/head"
 
 interface props {
     navigation: NavigationAPI
@@ -35,6 +36,11 @@ const Page: React.FC<props> = ({ navigation, page }) => {
     return (
         <div>
             <Navigation navigation={navigation} />
+            <Head>
+                <title>
+                    iGEM IONIS Paris | {locale === "fr" ? page.title_fr : page.title_en}
+                </title>
+            </Head>
             <div className="container px-4 mx-auto">
                 <div>
                     <h1 className="mt-8 text-4xl font-bold text-center">

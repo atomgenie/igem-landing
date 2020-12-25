@@ -13,6 +13,7 @@ import Link from "next/link"
 import { PageAPI } from "@igem-types/page"
 import moment from "moment"
 import { TwitterTimelineEmbed } from "react-twitter-embed"
+import Head from "next/head"
 
 interface props {
     home: HomeAPI
@@ -25,6 +26,9 @@ const Home: React.FC<props> = ({ home, navigation, articles }) => {
 
     return (
         <div className="flex flex-col min-h-screen">
+            <Head>
+                <title>iGEM IONIS Paris</title>
+            </Head>
             <Navigation navigation={navigation} />
             <div className="container mx-auto px-4">
                 <div className="flex flex-col">
