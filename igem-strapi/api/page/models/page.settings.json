@@ -43,6 +43,10 @@
     "public": {
       "type": "boolean",
       "default": true
+    },
+    "show_picture_on_page": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
