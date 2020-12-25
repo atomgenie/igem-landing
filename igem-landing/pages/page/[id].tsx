@@ -8,6 +8,9 @@ import axios from "axios"
 import { API_BASE_URL } from "@config/api"
 import Markdown from "react-markdown"
 import { HomeAPI } from "@igem-types/home"
+import { renderers } from "@components/markdown/render"
+import { getImage } from "@helpers/image"
+import { FiLoader } from "react-icons/fi"
 
 interface props {
     navigation: NavigationAPI
@@ -15,19 +18,39 @@ interface props {
 }
 
 const Page: React.FC<props> = ({ navigation, page }) => {
-    const { isFallback } = useRouter()
+    const { isFallback, locale } = useRouter()
 
     if (isFallback) {
-        return <div>Loading</div>
+        return (
+            <div className="h-screen flex items-center justify-center">
+                <FiLoader />
+                <div className="ml-2">
+                    {locale === "fr" ? "Chargement..." : "Loading..."}
+                </div>
+            </div>
+        )
     }
 
     return (
         <div>
             <Navigation navigation={navigation} />
             <div className="container px-4 mx-auto">
-                <div>{page.title_fr}</div>
                 <div>
-                    <Markdown allowDangerousHtml>{page.text_fr}</Markdown>
+                    <h1 className="mt-8 text-4xl font-bold text-center">
+                        {locale === "fr" ? page.title_fr : page.title_en}
+                    </h1>
+                </div>
+                <img
+                    className="w-full rounded-lg mt-4 object-cover"
+                    src={getImage(page.picture, "large")}
+                    style={{
+                        maxHeight: "50vh",
+                    }}
+                />
+                <div className="mt-8">
+                    <Markdown allowDangerousHtml renderers={renderers}>
+                        {locale === "fr" ? page.text_fr : page.text_en}
+                    </Markdown>
                 </div>
             </div>
         </div>
@@ -36,12 +59,22 @@ const Page: React.FC<props> = ({ navigation, page }) => {
 
 export const getStaticProps: GetStaticProps<props> = async ctx => {
     const navigationPromise = useNavigation()
-    const page = axios.get<PageAPI>(`${API_BASE_URL}/pages/${ctx.params.id}`)
+
+    let page
+
+    try {
+        page = (await axios.get<PageAPI>(`${API_BASE_URL}/pages/${ctx.params.id}`)).data
+    } catch {
+        return {
+            notFound: true,
+            revalidate: 10,
+        }
+    }
 
     return {
         props: {
             navigation: await navigationPromise,
-            page: (await page).data,
+            page: page,
         },
         revalidate: 10,
     }

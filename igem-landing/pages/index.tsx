@@ -23,17 +23,18 @@ const Home: React.FC<props> = ({ home, navigation }) => {
             <Navigation navigation={navigation} />
             <div className="container mx-auto px-4">
                 <div className="flex flex-col">
-                    <div className="flex flex-wrap gap-4 mt-4">
+                    <div className="flex flex-wrap gap-4 mt-4 overflow-hidden">
                         {home.pages.map(page => (
                             <Link key={page.id} href={`/page/${page.id}`}>
                                 <div
                                     style={{
                                         backgroundImage: `url(${getImage(
-                                            page.picture.url,
+                                            page.picture,
+                                            "small",
                                         )})`,
-                                        minWidth: 400,
+                                        minWidth: 300,
                                     }}
-                                    className="bg-center bg-cover flex-grow rounded-lg overflow-hidden cursor-pointer"
+                                    className="bg-center bg-cover rounded-lg overflow-hidden cursor-pointer flex-1"
                                 >
                                     <div
                                         className="text-white h-56 flex items-end justify-start text-center font-bold p-4"
@@ -42,7 +43,7 @@ const Home: React.FC<props> = ({ home, navigation }) => {
                                                 "linear-gradient(to top, rgba(0,0,0,0.5), transparent)",
                                         }}
                                     >
-                                        <div className="">
+                                        <div className="text-xl">
                                             {locale === "fr"
                                                 ? page.title_fr
                                                 : page.title_en}

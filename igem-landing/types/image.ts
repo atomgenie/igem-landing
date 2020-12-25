@@ -10,7 +10,7 @@ export interface ImageAPI {
     height: number
     url: string
     formats: {
-        thumbnail: {
+        thumbnail?: {
             name: string
             hash: string
             ext: string
@@ -21,7 +21,7 @@ export interface ImageAPI {
             path: null
             url: string
         }
-        large: {
+        large?: {
             name: string
             hash: string
             ext: string
@@ -32,7 +32,7 @@ export interface ImageAPI {
             path: null
             url: string
         }
-        medium: {
+        medium?: {
             name: string
             hash: string
             ext: string
@@ -43,7 +43,7 @@ export interface ImageAPI {
             path: null
             url: string
         }
-        small: {
+        small?: {
             name: string
             hash: string
             ext: string

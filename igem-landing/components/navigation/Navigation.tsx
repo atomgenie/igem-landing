@@ -20,10 +20,10 @@ export const Navigation: React.FC<props> = ({ navigation }) => {
             <div className="container mx-auto px-4">
                 <div className="flex items-center gap-2 mt-2 text-gray-400">
                     <Link locale="fr" href="/fr">
-                        FR
+                        <a>FR</a>
                     </Link>
                     <Link locale="en" href="/en">
-                        EN
+                        <a>EN</a>
                     </Link>
                     <div className="flex-grow"></div>
                     <div>F</div>
@@ -46,7 +46,7 @@ export const Navigation: React.FC<props> = ({ navigation }) => {
                         </div>
                     </div>
                 </Link>
-                <div className="hidden md:flex gap-2 py-3 mt-4 text-gray-500 bg-gray-100 rounded px-4">
+                <div className="hidden md:flex gap-4 py-3 mt-4 text-gray-500 bg-gray-100 rounded px-4">
                     {navigation.navigations.map(item => (
                         <NavigationItem item={item} key={item.id} />
                     ))}
