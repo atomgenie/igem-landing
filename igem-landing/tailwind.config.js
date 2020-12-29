@@ -12,6 +12,17 @@ module.exports = {
                 "2xl": "900px",
             },
         },
+        fontFamily: {
+            serif: [
+                "Lora",
+                "ui-serif",
+                "Georgia",
+                "Cambria",
+                "Times New Roman",
+                "Times",
+                "serif",
+            ],
+        },
     },
     variants: {
         extend: {},

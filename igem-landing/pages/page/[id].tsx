@@ -43,7 +43,7 @@ const Page: React.FC<props> = ({ navigation, page }) => {
             </Head>
             <div className="container px-4 mx-auto">
                 <div>
-                    <h1 className="mt-8 text-4xl font-bold text-center">
+                    <h1 className="mt-8 text-6xl font-bold text-left font-serif">
                         {locale === "fr" ? page.title_fr : page.title_en}
                     </h1>
                 </div>
@@ -54,10 +54,15 @@ const Page: React.FC<props> = ({ navigation, page }) => {
                         style={{
                             maxHeight: "50vh",
                         }}
+                        alt={locale === "fr" ? page.title_fr : page.title_en}
                     />
                 )}
-                <div className="my-8">
-                    <Markdown allowDangerousHtml renderers={renderers}>
+                <div className="my-8 font-serif text-lg">
+                    <Markdown
+                        allowDangerousHtml
+                        renderers={renderers}
+                        className="whitespace-pre-wrap"
+                    >
                         {locale === "fr" ? page.text_fr : page.text_en}
                     </Markdown>
                 </div>

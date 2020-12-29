@@ -36,7 +36,7 @@ export const Navigation: React.FC<props> = ({ navigation }) => {
                             <img
                                 src="/images/Logo.png"
                                 alt="iGEM IONIS Paris"
-                                className="max-h-14 mt-4 object-contain"
+                                className="max-h-20 mt-4 object-contain"
                             />
                         </div>
                         <div className="text-center text-gray-600 mt-2">
