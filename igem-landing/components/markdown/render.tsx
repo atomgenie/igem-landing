@@ -60,12 +60,12 @@ export const renderers = {
                             ? `${API_BASE_URL}${props.src}`
                             : props.src
                     }
-                    alt={props.title || ""}
+                    alt={props.alt || ""}
                     className="mx-auto max-h-64"
                 />
-                {props.title && (
+                {props.alt && props.alt !== "" && (
                     <span className="italic text-center block mt-2 px-8">
-                        {props.title}
+                        {props.alt}
                     </span>
                 )}
             </span>
